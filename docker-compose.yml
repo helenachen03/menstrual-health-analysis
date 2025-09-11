@@ -1,9 +1,23 @@
-version: '3.8'
+version: "3.9"
+
 services:
   notebook:
-    build: .
+    image: python:3.10-slim
+    container_name: ds_notebook
     ports:
-      - "8888:8888"
+      - "8888:8888"   # maps container port 8888 → host
     volumes:
-      - .:/app
-    command: jupyter notebook --ip=0.0.0.0 --allow-root --no-browser
+      - .:/app        # mount current project folder into /app
+    working_dir: /app
+    command: >
+      jupyter notebook
+      --ip=0.0.0.0
+      --allow-root
+      --no-browser
+      --NotebookApp.token=''    
+      --NotebookApp.password=''
+    environment:
+      - PYTHONUNBUFFERED=1
+    build:
+      context: .
+      dockerfile: Dockerfile
