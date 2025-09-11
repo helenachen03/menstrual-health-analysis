@@ -42,16 +42,16 @@ Using Docker Compose (recommended):
 ```
 docker-compose up --build
 ```
+This builds the image and starts the container.
 
-### 3. Run Jupyter Notebook
+JupyterLab will run on port 8888.
 
-If you used Docker only:
+### 3. Open in browser
+Go to:
 ```
-docker run -p 8888:8888 -v $(pwd):/app project-name
+http://127.0.0.1:8888
 ```
-
-Then copy the URL from the terminal (something like http://127.0.0.1:8888/?token=...) into your browser.
-
+You will see JupyterLab interface. No token or password is needed for local development.
 
 
 ## 📦 Dependencies
