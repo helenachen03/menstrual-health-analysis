@@ -1,23 +1,20 @@
 version: "3.9"
 
 services:
-  notebook:
-    image: python:3.10-slim
-    container_name: ds_notebook
+  jupyterlab:
+    build: .
+    container_name: ds_jupyterlab
     ports:
-      - "8888:8888"   # maps container port 8888 → host
+      - "8888:8888"
     volumes:
-      - .:/app        # mount current project folder into /app
+      - .:/app  # Mount current folder
     working_dir: /app
+    environment:
+      - PYTHONUNBUFFERED=1
     command: >
-      jupyter notebook
+      jupyter lab
       --ip=0.0.0.0
       --allow-root
       --no-browser
-      --NotebookApp.token=''    
+      --NotebookApp.token=''
       --NotebookApp.password=''
-    environment:
-      - PYTHONUNBUFFERED=1
-    build:
-      context: .
-      dockerfile: Dockerfile
