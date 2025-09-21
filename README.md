@@ -88,38 +88,27 @@ pip install -r requirements.txt
   ```
 
 
-### 2. Create a New Feature Branch
-- Always branch off dev before starting new work:
+### 2. Go to your branch before commit and push your changes
+- Always switch your branch before commit and push your changes:
   ```
-  git checkout dev
-  git pull origin dev
-  git checkout -b datamanipulation/ying
+  git checkout dev-ying
   ```
-- Examples:
-  - datamanipulation/ying
-  - analysis/ying
-  - visualizations/ying
 
-### 3. Keep Your Branch Up to Date
-- Before pushing or opening a PR, always rebase (or merge) the latest changes from `dev`:
+
+### 3. Commit your changes
+
+- Stage all your changes and commit:
   ```
-  git checkout dev
-  git pull origin dev
-  git checkout datamanipulation/ying
-  git rebase dev   # or: git merge dev
+  git add .
+  git commit -m "Describe your changes here"
   ```
-- Resolve any conflicts, then continue the rebase:
-  ```
-  git add <file>
-  git rebase --continue
-  ```
-### 4. Push Your Branch
+
+### 4. Push your branch to the remote
  ```
-  git push origin feature/short-description
+  git push origin dev-ying
+
  ```
-- If pushing for the first time:
- ```
-  git push -u origin datamanipulation/ying
+
  ```
 ### 5. Open a Pull Request (PR)
 - Go to the repository on GitHub.
@@ -129,7 +118,7 @@ pip install -r requirements.txt
 
   - Base branch: dev
 
-  - Compare branch: your feature branch
+  - Compare branch: your dev branch (i.e. dev_ying)
 
 - Add:
 
