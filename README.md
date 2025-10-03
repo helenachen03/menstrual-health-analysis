@@ -78,14 +78,75 @@ pip install -r requirements.txt
 ```
 
 
-## 🧑‍🤝‍🧑 Collaboration Workflow
+## 🧑‍🤝‍🧑 Collaboration Development Workflow
 
-### 1. Branching
-- Work on a feature branch:
+### 1. Set Upstream Branches
+- Make sure your local dev branch is synced with remote:
   ```
-  git checkout -b feature-branch-name
+  git checkout dev
+  git pull origin dev
   ```
-- Push your branch and open a Pull Request.
 
-### 2. Reviews
-- All PRs should be reviewed before merging into `main`.
+
+### 2. Create a New Feature Branch
+- Always branch off dev before starting new work:
+  ```
+  git checkout dev
+  git pull origin dev
+  git checkout -b datamanipulation/ying
+  ```
+- Examples:
+  - datamanipulation/ying
+  - analysis/ying
+  - visualizations/ying
+
+### 3. Keep Your Branch Up to Date
+- Before pushing or opening a PR, always rebase (or merge) the latest changes from `dev`:
+  ```
+  git checkout dev
+  git pull origin dev
+  git checkout datamanipulation/ying
+  git rebase dev   # or: git merge dev
+  ```
+- Resolve any conflicts, then continue the rebase:
+  ```
+  git add <file>
+  git rebase --continue
+  ```
+### 4. Push Your Branch
+ ```
+  git push origin feature/short-description
+ ```
+- If pushing for the first time:
+ ```
+  git push -u origin datamanipulation/ying
+ ```
+### 5. Open a Pull Request (PR)
+- Go to the repository on GitHub.
+- Click Pull Requests → New Pull Request.
+
+- Select:
+
+  - Base branch: dev
+
+  - Compare branch: your feature branch
+
+- Add:
+
+  - A clear title (short summary of the change).
+
+  - A description (what problem it solves, how to test, any notes).
+
+- Submit the PR.
+
+### 6. Review & Merge
+
+- Request reviews from teammates.
+
+- Address comments by committing changes to the same branch.
+
+- Once approved:
+
+  - Use Squash and Merge (preferred) to keep history clean.
+
+  - Delete the feature branch after merging.
